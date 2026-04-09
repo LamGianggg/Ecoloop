@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#61674c",
+                        "background": "#fcfeea",
+                        "error": "#ae4025",
+                        "surface-tint": "#2e7238",
+                        "surface-container-low": "#f8fce2",
+                        "on-tertiary-fixed-variant": "#636c00",
+                        "secondary-dim": "#41611b",
+                        "on-secondary-fixed-variant": "#44651e",
+                        "on-surface": "#343a23",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e5ecc9",
+                        "tertiary-fixed-dim": "#e2ed7b",
+                        "surface": "#fcfeea",
+                        "secondary-container": "#c7ef98",
+                        "on-secondary-fixed": "#294702",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#596100",
+                        "inverse-primary": "#b4fdb4",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#2e7238",
+                        "primary-fixed": "#abf4ac",
+                        "surface-dim": "#dfe6c4",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#b6bd9d",
+                        "secondary-fixed": "#c7ef98",
+                        "on-primary-fixed-variant": "#246830",
+                        "tertiary": "#616a00",
+                        "inverse-on-surface": "#9c9f8d",
+                        "primary-fixed-dim": "#9ee59f",
+                        "surface-container": "#f2f6da",
+                        "secondary-fixed-dim": "#b9e18b",
+                        "on-background": "#343a23",
+                        "on-primary-container": "#185e27",
+                        "surface-container-high": "#ebf1d3",
+                        "inverse-surface": "#0c0f05",
+                        "tertiary-dim": "#555d00",
+                        "on-error-container": "#6e1400",
+                        "surface-bright": "#fcfeea",
+                        "on-secondary-container": "#3b5a15",
+                        "primary-dim": "#21652d",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#474e00",
+                        "outline": "#7d8467",
+                        "tertiary-container": "#f1fc87",
+                        "surface-container-highest": "#e5ecc9",
+                        "on-primary-fixed": "#004a18",
+                        "primary-container": "#abf4ac",
+                        "secondary": "#4c6e27",
+                        "error-dim": "#791903",
+                        "tertiary-fixed": "#f1fc87",
+                        "error-container": "#fd795a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .font-headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <nav
+        class="fixed top-0 w-full z-50 bg-[#fcfeea]/80 dark:bg-[#1a1c0e]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(52,58,35,0.04)]">
+        <div
+            class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] text-base tracking-tight">
+            <div class="text-2xl font-bold text-[#2e7238] dark:text-[#abf4ac]">Lành Xanh</div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors" href="/Home/code.html">Trang
+                    chủ</a>
+                <a class="text-[#2e7238] dark:text-[#abf4ac] border-b-2 border-[#2e7238] pb-1 font-semibold"
+                    href="#">Phân loại</a>
+                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors" href="/We/code.html">Về chúng
+                    tôi</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:shadow-lg">
+                    Tham gia
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <header class="text-center mb-20">
+            <h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-background tracking-tight mb-6">
+                Mỗi món đồ đều có <span class="text-primary italic">nơi để về</span>
+            </h1>
+            <p class="text-on-surface-variant max-w-2xl mx-auto text-lg md:text-xl font-body leading-relaxed">
+                Tra cứu nhanh để biết vật dụng của bạn thuộc nhóm rác nào và cách xử lý đúng nhất để bảo vệ hành tinh.
+            </p>
+        </header>
+        <!-- Search-to-Sort Module -->
+        <section class="relative max-w-4xl mx-auto mb-32">
+            <div
+                class="bg-surface-container-low p-2 rounded-full shadow-lg flex items-center gap-4 px-6 focus-within:ring-2 ring-primary/20 transition-all">
+                <span class="material-symbols-outlined text-primary text-3xl">search</span>
+                <input
+                    class="w-full bg-transparent border-none focus:ring-0 text-xl py-4 font-body text-on-surface placeholder:text-outline"
+                    placeholder="Tìm kiếm vật dụng (ví dụ: chai nhựa, vỏ chuối...)" type="text" />
+                <button
+                    class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-colors whitespace-nowrap">Phân
+                    loại ngay</button>
+            </div>
+            <!-- Quick Suggestions -->
+            <div class="flex flex-wrap justify-center gap-3 mt-8">
+                <span
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Pin
+                    cũ</span>
+                <span
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Hộp
+                    sữa giấy</span>
+                <span
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Túi
+                    nilon</span>
+                <span
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Bóng
+                    đèn</span>
+            </div>
+        </section>
+        <!-- Waste Types Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+            <!-- Recyclable -->
+            <div
+                class="bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-primary-container/20 transition-all duration-500">
+                <div
+                    class="w-24 h-24 bg-primary-container rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-on-primary-container text-5xl">rebase_edit</span>
+                </div>
+                <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác tái chế</h3>
+                <p class="text-on-surface-variant text-base leading-relaxed">Giấy, nhựa cứng, kim loại, thủy tinh. Những
+                    vật liệu có thể hồi sinh vòng đời mới.</p>
+                <ul class="mt-6 flex flex-wrap justify-center gap-2">
+                    <li
+                        class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
+                        CHAI NHỰA</li>
+                    <li
+                        class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
+                        LON NHÔM</li>
+                </ul>
+            </div>
+            <!-- Organic -->
+            <div
+                class="bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-tertiary-container/20 transition-all duration-500">
+                <div
+                    class="w-24 h-24 bg-tertiary-container rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-on-tertiary-container text-5xl">eco</span>
+                </div>
+                <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác hữu cơ</h3>
+                <p class="text-on-surface-variant text-base leading-relaxed">Thức ăn thừa, vỏ trái cây, lá cây. Nguồn
+                    dinh dưỡng quý giá cho đất mẹ.</p>
+                <ul class="mt-6 flex flex-wrap justify-center gap-2">
+                    <li
+                        class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
+                        VỎ TRÁI CÂY</li>
+                    <li
+                        class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
+                        CƠM THỪA</li>
+                </ul>
+            </div>
+            <!-- Non-recyclable -->
+            <div
+                class="bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-error-container/10 transition-all duration-500">
+                <div
+                    class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-outline text-5xl">delete_forever</span>
+                </div>
+                <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác còn lại</h3>
+                <p class="text-on-surface-variant text-base leading-relaxed">Sành sứ vỡ, tã lót, cao su. Những loại rác
+                    cần xử lý chuyên biệt tại bãi chôn lấp.</p>
+                <ul class="mt-6 flex flex-wrap justify-center gap-2">
+                    <li
+                        class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
+                        GỐM SỨ</li>
+                    <li
+                        class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
+                        TÚI BẨN</li>
+                </ul>
+            </div>
+        </section>
+        <!-- Plastic Waste Guide (Asymmetric Bento) -->
+        <section class="space-y-12">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+                <div class="max-w-xl">
+                    <h2 class="font-headline text-4xl font-extrabold text-on-background mb-4">Làm sạch &amp; Ép gọn</h2>
+                    <p class="text-on-surface-variant text-lg">Hành động nhỏ, tác động lớn. Chỉ với 3 bước, bạn đã giúp
+                        quy trình tái chế nhựa trở nên hiệu quả gấp 5 lần.</p>
+                </div>
+                <div class="flex gap-4">
+                    <span class="material-symbols-outlined text-primary text-4xl">water_drop</span>
+                    <span class="material-symbols-outlined text-primary text-4xl">compress</span>
+                    <span class="material-symbols-outlined text-primary text-4xl">recycling</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Step 1 -->
+                <div class="md:col-span-7 bg-surface-container-low rounded-xl overflow-hidden relative group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="p-12 relative z-10">
+                        <span class="text-primary font-headline text-6xl font-black opacity-20 block mb-6">01</span>
+                        <h4 class="text-3xl font-headline font-bold text-on-surface mb-4">Tráng sạch nước thừa</h4>
+                        <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Loại bỏ hoàn toàn chất lỏng còn
+                            sót lại trong chai nhựa. Vi khuẩn và mùi hôi từ sữa hoặc nước ngọt có thể làm hỏng cả lô
+                            hàng tái chế.</p>
+                        <img class="w-full h-80 object-cover rounded-xl shadow-xl transform group-hover:scale-[1.02] transition-transform duration-700"
+                            data-alt="close up of clear plastic bottles being rinsed under a kitchen tap with soft daylight and water droplets"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR6Qwxc70AhqFxJ19ZPgE0ltOo6zlSHgUDe9JaxolHGIdHXX-jT2pavAarT6yVWLo1WaXO2HfT6m7eZGyiByBL6hJ7l7kNnmNswBTDt-oL2hIDj5rYjMuVPmWyZdtb7SyALqwfLiKSKQPdy7DN1wdAs0wDez8wVjzUCRQahgi2pbtGCTAZ9dJfa7C_8ssKO-yhxMTrs-7cNgRwmtJXa7KVKnJx7urq_u8-WZDEtlghz4Fuc6VVmQpJd5u_F60xH10WmZWXioBNZ2U" />
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="md:col-span-5 flex flex-col gap-8">
+                    <div class="bg-secondary-container p-10 rounded-xl h-full flex flex-col justify-center">
+                        <span
+                            class="text-on-secondary-container font-headline text-4xl font-black opacity-30 block mb-4">02</span>
+                        <h4 class="text-2xl font-headline font-bold text-on-secondary-container mb-3">Tháo rời nắp và
+                            nhãn</h4>
+                        <p class="text-on-secondary-container/80 font-body">Nắp và nhãn thường làm từ các loại nhựa khác
+                            nhau. Việc tách chúng giúp phân loại máy móc chính xác hơn.</p>
+                    </div>
+                    <div
+                        class="bg-surface-container-highest p-10 rounded-xl h-full flex flex-col justify-center border-2 border-dashed border-outline-variant">
+                        <span
+                            class="text-on-surface-variant font-headline text-4xl font-black opacity-30 block mb-4">03</span>
+                        <h4 class="text-2xl font-headline font-bold text-on-surface mb-3">Ép dẹt tiết kiệm diện tích
+                        </h4>
+                        <p class="text-on-surface-variant/80 font-body">Giẫm dẹt hoặc ép chai giúp tiết kiệm không gian
+                            lưu kho và vận chuyển, giảm phát thải carbon từ xe tải chở rác.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full rounded-t-[3rem] mt-20 bg-[#f8fce2] dark:bg-[#1a1c0e]">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full font-['Manrope'] text-sm text-[#343a23]/70 dark:text-[#e5ecc9]/70">
+            <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
+                <div class="text-lg font-bold text-[#2e7238] mb-2">Lành Xanh</div>
+                <p>© 2024 Lành Xanh - VJU Sustainable Living Community</p>
+            </div>
+            <div class="flex gap-8">
+                <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Chính sách
+                    bảo mật</a>
+                <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Điều khoản
+                    sử dụng</a>
+                <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Phản
+                    hồi</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
