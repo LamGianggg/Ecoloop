@@ -12,9 +12,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -100,6 +97,42 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
+        /* === CẢI THIỆN HIỆU ỨNG SÁNG ICON === */
+        .icon-circle {
+            transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* hiệu ứng scale mượt & “bật tung” */
+        }
+
+        /* Glow xanh lá - tái chế */
+        #recyclable-icon.active-recyclable {
+            transform: scale(1.18) !important;
+            box-shadow:
+                0 0 0 14px rgba(46, 114, 56, 0.22),
+                0 0 50px 12px rgba(46, 114, 56, 0.45) !important;
+        }
+
+        /* Glow vàng lục - hữu cơ */
+        #organic-icon.active-organic {
+            transform: scale(1.18) !important;
+            box-shadow:
+                0 0 0 14px rgba(97, 106, 0, 0.22),
+                0 0 50px 12px rgba(97, 106, 0, 0.45) !important;
+        }
+
+        /* Glow cam đỏ - rác còn lại */
+        #residual-icon.active-residual {
+            transform: scale(1.18) !important;
+            box-shadow:
+                0 0 0 14px rgba(174, 64, 37, 0.22),
+                0 0 50px 12px rgba(174, 64, 37, 0.45) !important;
+        }
+
+        /* Tăng độ nổi khi active */
+        .waste-card.active {
+            transform: translateY(-4px);
+            box-shadow: 25px 25px 40px -15px rgb(46 114 56 / 0.15);
+        }
     </style>
 </head>
 
@@ -109,13 +142,15 @@
         class="fixed top-0 w-full z-50 bg-[#fcfeea]/80 dark:bg-[#1a1c0e]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(52,58,35,0.04)]">
         <div
             class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] text-base tracking-tight">
-            <div class="text-2xl font-bold text-[#2e7238] dark:text-[#abf4ac]">Lành Xanh</div>
+            <div class="text-2xl font-bold text-[#2e7238] dark:text-[#abf4ac]">Ecoloop</div>
             <div class="hidden md:flex items-center space-x-8">
-                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors" href="/index.html">Trang
+                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors"
+                    href="/index.html">Trang
                     chủ</a>
                 <a class="text-[#2e7238] dark:text-[#abf4ac] border-b-2 border-[#2e7238] pb-1 font-semibold"
                     href="#">Phân loại</a>
-                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors" href="/We/code.html">Về chúng
+                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors"
+                    href="/We/code.html">Về chúng
                     tôi</a>
             </div>
             <div class="flex items-center gap-4">
@@ -136,42 +171,46 @@
                 Tra cứu nhanh để biết vật dụng của bạn thuộc nhóm rác nào và cách xử lý đúng nhất để bảo vệ hành tinh.
             </p>
         </header>
+
         <!-- Search-to-Sort Module -->
         <section class="relative max-w-4xl mx-auto mb-32">
             <div
                 class="bg-surface-container-low p-2 rounded-full shadow-lg flex items-center gap-4 px-6 focus-within:ring-2 ring-primary/20 transition-all">
                 <span class="material-symbols-outlined text-primary text-3xl">search</span>
-                <input
+                <input id="waste-search"
                     class="w-full bg-transparent border-none focus:ring-0 text-xl py-4 font-body text-on-surface placeholder:text-outline"
                     placeholder="Tìm kiếm vật dụng (ví dụ: chai nhựa, vỏ chuối...)" type="text" />
-                <button
-                    class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-colors whitespace-nowrap">Phân
-                    loại ngay</button>
+                <button id="classify-btn"
+                    class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-colors whitespace-nowrap">
+                    Phân loại ngay
+                </button>
             </div>
+
             <!-- Quick Suggestions -->
             <div class="flex flex-wrap justify-center gap-3 mt-8">
-                <span
+                <span onclick="quickSearch('chai nhựa')"
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Chai
+                    nhựa</span>
+                <span onclick="quickSearch('vỏ chuối')"
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Vỏ
+                    chuối</span>
+                <span onclick="quickSearch('pin cũ')"
                     class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Pin
                     cũ</span>
-                <span
-                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Hộp
-                    sữa giấy</span>
-                <span
-                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Túi
-                    nilon</span>
-                <span
-                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Bóng
-                    đèn</span>
+                <span onclick="quickSearch('lon nước ngọt')"
+                    class="px-4 py-2 bg-surface-container rounded-full text-sm font-medium text-on-surface-variant border border-outline-variant/10 cursor-pointer hover:bg-surface-variant transition-colors">Lon
+                    nước ngot</span>
             </div>
         </section>
+
         <!-- Waste Types Grid -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
             <!-- Recyclable -->
-            <div
-                class="bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-primary-container/20 transition-all duration-500">
-                <div
-                    class="w-24 h-24 bg-primary-container rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-on-primary-container text-5xl">rebase_edit</span>
+            <div id="recyclable-card"
+                class="waste-card bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-primary-container/20 transition-all duration-500">
+                <div id="recyclable-icon"
+                    class="icon-circle w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 group-hover:scale-110">
+                    <span class="material-symbols-outlined text-outline text-5xl">rebase_edit</span>
                 </div>
                 <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác tái chế</h3>
                 <p class="text-on-surface-variant text-base leading-relaxed">Giấy, nhựa cứng, kim loại, thủy tinh. Những
@@ -185,12 +224,13 @@
                         LON NHÔM</li>
                 </ul>
             </div>
+
             <!-- Organic -->
-            <div
-                class="bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-tertiary-container/20 transition-all duration-500">
-                <div
-                    class="w-24 h-24 bg-tertiary-container rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-on-tertiary-container text-5xl">eco</span>
+            <div id="organic-card"
+                class="waste-card bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-tertiary-container/20 transition-all duration-500">
+                <div id="organic-icon"
+                    class="icon-circle w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 group-hover:scale-110">
+                    <span class="material-symbols-outlined text-outline text-5xl">eco</span>
                 </div>
                 <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác hữu cơ</h3>
                 <p class="text-on-surface-variant text-base leading-relaxed">Thức ăn thừa, vỏ trái cây, lá cây. Nguồn
@@ -204,16 +244,17 @@
                         CƠM THỪA</li>
                 </ul>
             </div>
-            <!-- Non-recyclable -->
-            <div
-                class="bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-error-container/10 transition-all duration-500">
-                <div
-                    class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+
+            <!-- Residual -->
+            <div id="residual-card"
+                class="waste-card bg-surface-container-low p-10 rounded-xl flex flex-col items-center text-center group hover:bg-error-container/10 transition-all duration-500">
+                <div id="residual-icon"
+                    class="icon-circle w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 group-hover:scale-110">
                     <span class="material-symbols-outlined text-outline text-5xl">delete_forever</span>
                 </div>
-                <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác còn lại</h3>
+                <h3 class="font-headline text-2xl font-bold mb-4 text-on-surface">Rác vô cơ</h3>
                 <p class="text-on-surface-variant text-base leading-relaxed">Sành sứ vỡ, tã lót, cao su. Những loại rác
-                    cần xử lý chuyên biệt tại bãi chôn lấp.</p>
+                    cần xử lý chuyên biệt.</p>
                 <ul class="mt-6 flex flex-wrap justify-center gap-2">
                     <li
                         class="bg-surface-container-highest px-3 py-1 rounded-md text-xs font-bold text-on-surface-variant">
@@ -224,7 +265,8 @@
                 </ul>
             </div>
         </section>
-        <!-- Plastic Waste Guide (Asymmetric Bento) -->
+
+        <!-- Plastic Waste Guide (giữ nguyên) -->
         <section class="space-y-12">
             <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
                 <div class="max-w-xl">
@@ -239,7 +281,6 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <!-- Step 1 -->
                 <div class="md:col-span-7 bg-surface-container-low rounded-xl overflow-hidden relative group">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -248,14 +289,11 @@
                         <span class="text-primary font-headline text-6xl font-black opacity-20 block mb-6">01</span>
                         <h4 class="text-3xl font-headline font-bold text-on-surface mb-4">Tráng sạch nước thừa</h4>
                         <p class="text-on-surface-variant text-lg leading-relaxed mb-8">Loại bỏ hoàn toàn chất lỏng còn
-                            sót lại trong chai nhựa. Vi khuẩn và mùi hôi từ sữa hoặc nước ngọt có thể làm hỏng cả lô
-                            hàng tái chế.</p>
+                            sót lại trong chai nhựa.</p>
                         <img class="w-full h-80 object-cover rounded-xl shadow-xl transform group-hover:scale-[1.02] transition-transform duration-700"
-                            data-alt="close up of clear plastic bottles being rinsed under a kitchen tap with soft daylight and water droplets"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR6Qwxc70AhqFxJ19ZPgE0ltOo6zlSHgUDe9JaxolHGIdHXX-jT2pavAarT6yVWLo1WaXO2HfT6m7eZGyiByBL6hJ7l7kNnmNswBTDt-oL2hIDj5rYjMuVPmWyZdtb7SyALqwfLiKSKQPdy7DN1wdAs0wDez8wVjzUCRQahgi2pbtGCTAZ9dJfa7C_8ssKO-yhxMTrs-7cNgRwmtJXa7KVKnJx7urq_u8-WZDEtlghz4Fuc6VVmQpJd5u_F60xH10WmZWXioBNZ2U" />
                     </div>
                 </div>
-                <!-- Step 2 -->
                 <div class="md:col-span-5 flex flex-col gap-8">
                     <div class="bg-secondary-container p-10 rounded-xl h-full flex flex-col justify-center">
                         <span
@@ -263,7 +301,7 @@
                         <h4 class="text-2xl font-headline font-bold text-on-secondary-container mb-3">Tháo rời nắp và
                             nhãn</h4>
                         <p class="text-on-secondary-container/80 font-body">Nắp và nhãn thường làm từ các loại nhựa khác
-                            nhau. Việc tách chúng giúp phân loại máy móc chính xác hơn.</p>
+                            nhau.</p>
                     </div>
                     <div
                         class="bg-surface-container-highest p-10 rounded-xl h-full flex flex-col justify-center border-2 border-dashed border-outline-variant">
@@ -272,19 +310,20 @@
                         <h4 class="text-2xl font-headline font-bold text-on-surface mb-3">Ép dẹt tiết kiệm diện tích
                         </h4>
                         <p class="text-on-surface-variant/80 font-body">Giẫm dẹt hoặc ép chai giúp tiết kiệm không gian
-                            lưu kho và vận chuyển, giảm phát thải carbon từ xe tải chở rác.</p>
+                            và giảm phát thải carbon.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
     <!-- Footer -->
     <footer class="w-full rounded-t-[3rem] mt-20 bg-[#f8fce2] dark:bg-[#1a1c0e]">
         <div
             class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full font-['Manrope'] text-sm text-[#343a23]/70 dark:text-[#e5ecc9]/70">
             <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
-                <div class="text-lg font-bold text-[#2e7238] mb-2">Lành Xanh</div>
-                <p>© 2024 Lành Xanh - VJU Sustainable Living Community</p>
+                <div class="text-lg font-bold text-[#2e7238] mb-2">Ecoloop</div>
+                <p>© 2026 Ecoloop - VJU Sustainable Living Community</p>
             </div>
             <div class="flex gap-8">
                 <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Chính sách
@@ -296,6 +335,164 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('waste-search');
+            const classifyBtn = document.getElementById('classify-btn');
+
+            // ================= DATA =================
+            const wasteData = [
+                // Recyclable
+                { name: "Vỏ lon bia", type: "recyclable", desc: "Rửa sạch, ép dẹt trước khi bỏ.", main: ["bia", "lon bia", "vỏ bia"] },
+                { name: "Lon nước ngọt", type: "recyclable", desc: "Rửa sạch, ép dẹt.", main: ["lon nước", "nước ngọt", "lon"] },
+                { name: "Chai nhựa", type: "recyclable", desc: "Rửa sạch, bỏ nắp, ép nhẹ.", main: ["chai nhựa", "chai nước", "chai", "nhựa"] },
+                { name: "Vỏ hộp sữa", type: "recyclable", desc: "Rửa sạch, cắt nắp, ép phẳng.", main: ["hộp sữa", "sữa"] },
+                { name: "Giấy A4", type: "recyclable", desc: "Giấy sạch, bỏ vào thùng tái chế.", main: ["giấy a4", "a4", "giấy in", "giấy"] },
+
+                // Organic
+                { name: "Vỏ chuối", type: "organic", desc: "Bỏ vào thùng hữu cơ để ủ phân.", main: ["chuối", "vỏ chuối"] },
+                { name: "Vỏ cam", type: "organic", desc: "Bỏ vào thùng hữu cơ.", main: ["cam", "quýt", "vỏ cam"] },
+                { name: "Cơm thừa", type: "organic", desc: "Đậy kín tránh ruồi.", main: ["cơm", "cơm thừa"] },
+                { name: "Lá cây", type: "organic", desc: "Có thể ủ phân.", main: ["lá", "lá cây"] },
+
+                // Residual
+                { name: "Pin cũ", type: "residual", desc: "Chứa kim loại nặng, cần xử lý riêng.", main: ["pin", "pin cũ"] },
+                { name: "Đèn huỳnh quang", type: "residual", desc: "Chứa thủy ngân.", main: ["đèn", "huỳnh quang"] },
+                { name: "Khẩu trang", type: "residual", desc: "Có nguy cơ sinh học.", main: ["khẩu trang", "mặt nạ"] }
+            ];
+
+            // ================= DOM =================
+            const cards = {
+                recyclable: document.getElementById('recyclable-card'),
+                organic: document.getElementById('organic-card'),
+                residual: document.getElementById('residual-card')
+            };
+
+            const icons = {
+                recyclable: document.getElementById('recyclable-icon'),
+                organic: document.getElementById('organic-icon'),
+                residual: document.getElementById('residual-icon')
+            };
+
+            // ================= RESET =================
+            function resetAll() {
+                Object.values(cards).forEach(card => card.classList.remove('active'));
+
+                Object.values(icons).forEach(icon => {
+                    icon.classList.remove(
+                        'active-recyclable', 'active-organic', 'active-residual',
+                        'bg-primary-container', 'text-on-primary-container',
+                        'bg-tertiary-container', 'text-on-tertiary-container',
+                        'bg-error-container', 'text-on-error-container'
+                    );
+                    icon.classList.add('bg-surface-container-highest', 'text-outline');
+                });
+
+                removeResult();
+            }
+
+            // ================= ACTIVATE =================
+            function activateCard(category) {
+                const card = cards[category];
+                const icon = icons[category];
+
+                if (!card || !icon) return;
+
+                card.classList.add('active');
+
+                if (category === 'recyclable') {
+                    icon.classList.add('bg-primary-container', 'text-on-primary-container', 'active-recyclable');
+                } else if (category === 'organic') {
+                    icon.classList.add('bg-tertiary-container', 'text-on-tertiary-container', 'active-organic');
+                } else {
+                    icon.classList.add('bg-error-container', 'text-on-error-container', 'active-residual');
+                }
+            }
+
+            // ================= SEARCH LOGIC =================
+            function findWasteItem(input) {
+                input = input.toLowerCase();
+
+                let bestMatch = null;
+
+                for (let item of wasteData) {
+                    for (let keyword of item.main) {
+                        if (input.includes(keyword)) {
+                            bestMatch = item;
+                            break;
+                        }
+                    }
+                    if (bestMatch) break;
+                }
+
+                return bestMatch;
+            }
+
+            // ================= RESULT UI =================
+            function showResult(item) {
+                removeResult();
+
+                const resultDiv = document.createElement('div');
+                resultDiv.id = "result-box";
+                resultDiv.className = "mt-10 p-6 rounded-xl bg-surface-container shadow-lg text-center animate-fadeIn";
+
+                resultDiv.innerHTML = `
+                    <h3 class="text-2xl font-bold mb-2">${item.name}</h3>
+                    <p class="text-on-surface-variant mb-2">${item.desc}</p>
+                    <span class="font-semibold text-primary">Phân loại: ${getLabel(item.type)}</span>
+                `;
+
+                document.querySelector('section.relative').appendChild(resultDiv);
+            }
+
+            function removeResult() {
+                const old = document.getElementById('result-box');
+                if (old) old.remove();
+            }
+
+            function getLabel(type) {
+                if (type === 'recyclable') return "Tái chế ♻️";
+                if (type === 'organic') return "Hữu cơ 🌱";
+                return "Rác vô cơ ⚠️";
+            }
+
+            // ================= MAIN =================
+            function classifyWaste() {
+                const inputVal = searchInput.value.trim();
+
+                if (!inputVal) {
+                    resetAll();
+                    return;
+                }
+
+                const item = findWasteItem(inputVal);
+
+                if (item) {
+                    resetAll();
+                    activateCard(item.type);
+                    showResult(item);
+                } else {
+                    resetAll();
+                }
+            }
+
+            // ================= EVENTS =================
+            classifyBtn.addEventListener('click', classifyWaste);
+
+            searchInput.addEventListener('keypress', e => {
+                if (e.key === 'Enter') classifyWaste();
+            });
+
+            window.quickSearch = function (term) {
+                searchInput.value = term;
+                classifyWaste();
+            };
+
+            // INIT
+            resetAll();
+        });
+    </script>
 </body>
 
 </html>
