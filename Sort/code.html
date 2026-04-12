@@ -89,7 +89,7 @@
     </script>
     <style>
         /* =========================
-           BASE
+            BASE
         ========================= */
         body {
             font-family: 'Manrope', sans-serif;
@@ -105,7 +105,7 @@
         }
 
         /* =========================
-           ICON BASE
+            ICON BASE
         ========================= */
         .icon-circle {
             transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -113,7 +113,7 @@
         }
 
         /* =========================
-           GLOW EFFECT (MOBILE FIRST)
+            GLOW EFFECT (MOBILE FIRST)
         ========================= */
 
         /* Tái chế - xanh */
@@ -141,7 +141,7 @@
         }
 
         /* =========================
-           CARD ACTIVE
+            CARD ACTIVE
         ========================= */
         .waste-card.active {
             transform: translateY(-3px);
@@ -191,7 +191,7 @@
         }
 
         /* =========================
-           DESKTOP (≥1024px)
+            DESKTOP (≥1024px)
         ========================= */
         @media (min-width: 1024px) {
 
@@ -233,26 +233,62 @@
 
 <body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
     <!-- TopNavBar -->
-    <nav
-        class="fixed top-0 w-full z-50 bg-[#fcfeea]/80 dark:bg-[#1a1c0e]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(52,58,35,0.04)]">
-        <div
-            class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] text-base tracking-tight">
-            <div class="text-2xl font-bold text-[#2e7238] dark:text-[#abf4ac]">Ecoloop</div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors"
-                    href="/index.html">Trang
-                    chủ</a>
-                <a class="text-[#2e7238] dark:text-[#abf4ac] border-b-2 border-[#2e7238] pb-1 font-semibold"
-                    href="#">Phân loại</a>
-                <a class="text-[#343a23] dark:text-[#e5ecc9] hover:text-[#2e7238] transition-colors"
-                    href="/We/code.html">Về chúng
-                    tôi</a>
+    <nav class="fixed top-0 w-full z-50 glass-nav shadow-[0_20px_40px_rgba(52,58,35,0.04)]">
+
+        <div class="flex justify-between items-center px-4 md:px-8 py-4 max-w-7xl mx-auto">
+
+            <!-- LOGO -->
+            <div class="text-xl md:text-2xl font-bold text-[#2e7238] dark:text-[#abf4ac] font-headline">
+                Ecoloop
             </div>
-            <div class="flex items-center gap-4">
-                <button
-                    class="material-symbols-outlined p-2 text-on-surface hover:bg-[#f2f6da]/50 rounded-full transition-all duration-300">search</button>
+
+            <!-- DESKTOP MENU -->
+            <div class="hidden md:flex items-center space-x-8 font-headline text-base tracking-tight">
+                <a class="text-[#343a23] hover:text-[#2e7238] transition-colors" href="/index.html">
+                    Trang chủ
+                </a>
+                <a class=" text-[#2e7238] border-b-2 border-[#2e7238] pb-1 font-semibold" href="/Sort/code.html">
+                    Phân loại
+                </a>
+                <a class="text-[#343a23] hover:text-[#2e7238] transition-colors" href="/We/code.html">
+                    Về chúng tôi
+                </a>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="flex items-center gap-2 md:gap-4">
+
+                <!-- SEARCH -->
+                <button class="material-symbols-outlined p-2 rounded-full hover:bg-[#f2f6da]/50 transition">
+                    search
+                </button>
+
+                <!-- HAMBURGER -->
+                <button id="menu-toggle"
+                    class="material-symbols-outlined p-2 rounded-full hover:bg-[#f2f6da]/50 transition md:hidden">
+                    menu
+                </button>
+
             </div>
         </div>
+
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-4 px-6 pb-6 pt-2 bg-[#f8fce2] shadow-md">
+
+            <a class="text-[#343a23]" href="/index.html">
+                Trang chủ
+            </a>
+
+            <a class="text-[#2e7238] font-semibold " href="/Sort/code.html">
+                Phân loại
+            </a>
+
+            <a class="text-[#343a23]" href="/We/code.html">
+                Về chúng tôi
+            </a>
+
+        </div>
+
     </nav>
     <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
         <!-- Hero Section -->
