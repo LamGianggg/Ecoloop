@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo QR Code có Logo</title>
+    <!-- Sử dụng thư viện QR Code Styling -->
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 { color: #333; margin-bottom: 1.5rem; }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #canvas {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .btn-download {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .btn-download:hover {
+            background-color: #218838;
+        }
+        .hint {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>QR Code Generator</h1>
+    
+    <div class="input-group">
+        <label for="urlInput">Nhập liên kết (URL):</label>
+        <input type="text" id="urlInput" placeholder="https://example.com" value="https://google.com">
+    </div>
+
+    <div class="input-group">
+        <label for="logoInput">Tải ảnh Logo (PNG/JPG):</label>
+        <input type="file" id="logoInput" accept="image/*">
+        <p class="hint">Mẹo: Nên dùng ảnh vuông, nền trong suốt.</p>
+    </div>
+
+    <div id="canvas"></div>
+
+    <button class="btn-download" onclick="downloadQR()">Tải mã QR về máy</button>
+</div>
+
+<script>
+    // Cấu hình ban đầu cho QR Code
+    const qrCode = new QRCodeStyling({
+        width: 300,
+        height: 300,
+        type: "svg",
+        data: "https://google.com",
+        image: "",
+        dotsOptions: {
+            color: "#000000",
+            type: "rounded"
+        },
+        backgroundOptions: {
+            color: "#ffffff",
+        },
+        imageOptions: {
+            crossOrigin: "anonymous",
+            margin: 5,
+            imageSize: 0.4 // Kích thước logo (0.4 = 40%)
+        }
+    });
+
+    const canvasElement = document.getElementById("canvas");
+    qrCode.append(canvasElement);
+
+    // Lắng nghe sự kiện thay đổi URL
+    document.getElementById("urlInput").addEventListener("input", (e) => {
+        qrCode.update({
+            data: e.target.value
+        });
+    });
+
+    // Lắng nghe sự kiện tải file logo
+    document.getElementById("logoInput").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                qrCode.update({
+                    image: event.target.result
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Hàm tải ảnh
+    function downloadQR() {
+        qrCode.download({ name: "my-qrcode", extension: "png" });
+    }
+</script>
+
+</body>
+</html>

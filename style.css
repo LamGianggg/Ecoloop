@@ -1,0 +1,52 @@
+/* ========== BASE (Mobile First) ========== */
+body {
+    font-size: 14px;
+    padding: 10px;
+}
+
+.container {
+    width: 100%;
+    padding: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ========== TABLET (iPad) ========== */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        max-width: 720px;
+        margin: auto;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========== DESKTOP ========== */
+@media (min-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="style.css">
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -88,8 +88,12 @@
         }
     </script>
     <style>
+        /* =========================
+           BASE
+        ========================= */
         body {
             font-family: 'Manrope', sans-serif;
+            font-size: 14px;
         }
 
         .font-headline {
@@ -100,40 +104,129 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        /* === CẢI THIỆN HIỆU ỨNG SÁNG ICON === */
+        /* =========================
+           ICON BASE
+        ========================= */
         .icon-circle {
             transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
-            /* hiệu ứng scale mượt & “bật tung” */
+            will-change: transform, box-shadow;
         }
 
-        /* Glow xanh lá - tái chế */
+        /* =========================
+           GLOW EFFECT (MOBILE FIRST)
+        ========================= */
+
+        /* Tái chế - xanh */
         #recyclable-icon.active-recyclable {
-            transform: scale(1.18) !important;
+            transform: scale(1.12);
             box-shadow:
-                0 0 0 14px rgba(46, 114, 56, 0.22),
-                0 0 50px 12px rgba(46, 114, 56, 0.45) !important;
+                0 0 0 8px rgba(46, 114, 56, 0.18),
+                0 0 30px 8px rgba(46, 114, 56, 0.35);
         }
 
-        /* Glow vàng lục - hữu cơ */
+        /* Hữu cơ - vàng lục */
         #organic-icon.active-organic {
-            transform: scale(1.18) !important;
+            transform: scale(1.12);
             box-shadow:
-                0 0 0 14px rgba(97, 106, 0, 0.22),
-                0 0 50px 12px rgba(97, 106, 0, 0.45) !important;
+                0 0 0 8px rgba(97, 106, 0, 0.18),
+                0 0 30px 8px rgba(97, 106, 0, 0.35);
         }
 
-        /* Glow cam đỏ - rác còn lại */
+        /* Rác còn lại - cam đỏ */
         #residual-icon.active-residual {
-            transform: scale(1.18) !important;
+            transform: scale(1.12);
             box-shadow:
-                0 0 0 14px rgba(174, 64, 37, 0.22),
-                0 0 50px 12px rgba(174, 64, 37, 0.45) !important;
+                0 0 0 8px rgba(174, 64, 37, 0.18),
+                0 0 30px 8px rgba(174, 64, 37, 0.35);
         }
 
-        /* Tăng độ nổi khi active */
+        /* =========================
+           CARD ACTIVE
+        ========================= */
         .waste-card.active {
-            transform: translateY(-4px);
-            box-shadow: 25px 25px 40px -15px rgb(46 114 56 / 0.15);
+            transform: translateY(-3px);
+            box-shadow: 15px 15px 30px -10px rgb(0 0 0 / 0.12);
+        }
+
+        /* =========================
+           TABLET (≥768px)
+        ========================= */
+        @media (min-width: 768px) {
+
+            body {
+                font-size: 16px;
+            }
+
+            .icon-circle {
+                transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+
+            #recyclable-icon.active-recyclable,
+            #organic-icon.active-organic,
+            #residual-icon.active-residual {
+                transform: scale(1.15);
+            }
+
+            #recyclable-icon.active-recyclable {
+                box-shadow:
+                    0 0 0 10px rgba(46, 114, 56, 0.22),
+                    0 0 40px 10px rgba(46, 114, 56, 0.4);
+            }
+
+            #organic-icon.active-organic {
+                box-shadow:
+                    0 0 0 10px rgba(97, 106, 0, 0.22),
+                    0 0 40px 10px rgba(97, 106, 0, 0.4);
+            }
+
+            #residual-icon.active-residual {
+                box-shadow:
+                    0 0 0 10px rgba(174, 64, 37, 0.22),
+                    0 0 40px 10px rgba(174, 64, 37, 0.4);
+            }
+
+            .waste-card.active {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* =========================
+           DESKTOP (≥1024px)
+        ========================= */
+        @media (min-width: 1024px) {
+
+            body {
+                font-size: 18px;
+            }
+
+            #recyclable-icon.active-recyclable,
+            #organic-icon.active-organic,
+            #residual-icon.active-residual {
+                transform: scale(1.18);
+            }
+
+            #recyclable-icon.active-recyclable {
+                box-shadow:
+                    0 0 0 14px rgba(46, 114, 56, 0.22),
+                    0 0 50px 12px rgba(46, 114, 56, 0.45);
+            }
+
+            #organic-icon.active-organic {
+                box-shadow:
+                    0 0 0 14px rgba(97, 106, 0, 0.22),
+                    0 0 50px 12px rgba(97, 106, 0, 0.45);
+            }
+
+            #residual-icon.active-residual {
+                box-shadow:
+                    0 0 0 14px rgba(174, 64, 37, 0.22),
+                    0 0 50px 12px rgba(174, 64, 37, 0.45);
+            }
+
+            .waste-card.active {
+                transform: translateY(-6px);
+                box-shadow: 25px 25px 40px -15px rgb(46 114 56 / 0.15);
+            }
         }
     </style>
 </head>
@@ -174,16 +267,33 @@
 
         <!-- Search-to-Sort Module -->
         <section class="relative max-w-4xl mx-auto mb-32">
-            <div
-                class="bg-surface-container-low p-2 rounded-full shadow-lg flex items-center gap-4 px-6 focus-within:ring-2 ring-primary/20 transition-all">
-                <span class="material-symbols-outlined text-primary text-3xl">search</span>
-                <input id="waste-search"
-                    class="w-full bg-transparent border-none focus:ring-0 text-xl py-4 font-body text-on-surface placeholder:text-outline"
+            <div class="bg-surface-container-low rounded-full shadow-lg flex items-center gap-2 px-3 py-2 
+            md:gap-4 md:px-6 md:py-3 
+            focus-within:ring-2 ring-primary/20 transition-all w-full">
+
+                <!-- ICON -->
+                <span class="material-symbols-outlined text-primary text-xl md:text-2xl flex-shrink-0">
+                    search
+                </span>
+
+                <!-- INPUT -->
+                <input id="waste-search" class="flex-1 min-w-0 bg-transparent border-none focus:ring-0 
+                text-sm md:text-base lg:text-lg 
+                py-2 md:py-3 
+                font-body text-on-surface placeholder:text-outline"
                     placeholder="Tìm kiếm vật dụng (ví dụ: chai nhựa, vỏ chuối...)" type="text" />
-                <button id="classify-btn"
-                    class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-colors whitespace-nowrap">
+
+                <!-- BUTTON -->
+                <button id="classify-btn" class="bg-primary text-on-primary 
+                px-3 py-2 text-sm 
+                md:px-5 md:py-2.5 md:text-base 
+                lg:px-6 lg:py-3 lg:text-lg
+                rounded-full font-bold 
+                hover:bg-primary-dim transition-colors 
+                whitespace-nowrap flex-shrink-0">
                     Phân loại ngay
                 </button>
+
             </div>
 
             <!-- Quick Suggestions -->
@@ -328,7 +438,8 @@
                     <div class="flex items-center gap-3 mb-2">
                         <div
                             class="w-12 h-12 text-white rounded-2xl flex items-center justify-center text-4xl shadow-inner">
-                            <img src="/Ecoloop.jpg" alt=""></div>
+                            <img src="/Ecoloop.jpg" alt="">
+                        </div>
                         <div class="text-4xl font-bold text-[#2e7238] font-headline tracking-[-1px]">Ecoloop</div>
                     </div>
 
