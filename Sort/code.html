@@ -12,6 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -155,9 +157,7 @@
             </div>
             <div class="flex items-center gap-4">
                 <button
-                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:shadow-lg">
-                    Tham gia
-                </button>
+                    class="material-symbols-outlined p-2 text-on-surface hover:bg-[#f2f6da]/50 rounded-full transition-all duration-300">search</button>
             </div>
         </div>
     </nav>
@@ -318,180 +318,66 @@
 
     <!-- Footer -->
     <footer class="w-full rounded-t-[3rem] mt-20 bg-[#f8fce2] dark:bg-[#1a1c0e]">
-        <div
-            class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full font-['Manrope'] text-sm text-[#343a23]/70 dark:text-[#e5ecc9]/70">
-            <div class="flex flex-col items-center md:items-start mb-6 md:mb-0">
-                <div class="text-lg font-bold text-[#2e7238] mb-2">Ecoloop</div>
-                <p>© 2026 Ecoloop - VJU Sustainable Living Community</p>
+        <div class="max-w-7xl mx-auto px-8 md:px-12 py-12 font-['Manrope']">
+
+            <!-- Main content - 4 cột giống hệt thiết kế bạn gửi -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+
+                <!-- Cột 1: Logo + mô tả (giống bên trái) -->
+                <div class="lg:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div
+                            class="w-12 h-12 text-white rounded-2xl flex items-center justify-center text-4xl shadow-inner">
+                            <img src="/Ecoloop.jpg" alt=""></div>
+                        <div class="text-4xl font-bold text-[#2e7238] font-headline tracking-[-1px]">Ecoloop</div>
+                    </div>
+
+                    <p class="text-[#343a23]/80 dark:text-[#e5ecc9]/80 text-sm leading-tight max-w-[260px]">
+                        Hành trình xanh vì một tương lai bền vững.<br>
+                        Bắt đầu từ những hành động nhỏ nhất.
+                    </p>
+
+                    <!-- Social icons - kiểu vuông bo tròn giống ảnh -->
+                    <div class="flex gap-4 mt-8">
+                        <a href="#"
+                            class="w-10 h-10 bg-white dark:bg-[#2e7238]/10 hover:bg-[#2e7238]/10 rounded-3xl flex items-center justify-center text-2xl transition-all hover:scale-110 shadow-sm"><i
+                                class="fa-brands fa-facebook text-blue-600 hover:scale-110 transition"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-white dark:bg-[#2e7238]/10 hover:bg-[#2e7238]/10 rounded-3xl flex items-center justify-center text-2xl transition-all hover:scale-110 shadow-sm">✉️</a>
+                    </div>
+                </div>
+
+                <!-- Cột 2: KHÁM PHÁ -->
+                <div class="lg:col-span-3">
+                    <p class="uppercase text-[#2e7238] font-bold tracking-widest text-sm mb-4">KHÁM PHÁ</p>
+                    <div class="flex flex-col gap-3 text-[#343a23]/80 dark:text-[#e5ecc9]/80 text-[15px]">
+                        <a href="/Sort/code.html" class="hover:text-[#2e7238] transition-colors">Phân loại</a>
+                    </div>
+                </div>
+
+                <!-- Cột 3: VỀ ECOLOOP -->
+                <div class="lg:col-span-3">
+                    <p class="uppercase text-[#2e7238] font-bold tracking-widest text-sm mb-4">VỀ ECOLOOP</p>
+                    <div class="flex flex-col gap-3 text-[#343a23]/80 dark:text-[#e5ecc9]/80 text-[15px]">
+                        <a href="/We/code.html" class="hover:text-[#2e7238] transition-colors">Về chúng tôi</a>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-8">
-                <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Chính sách
-                    bảo mật</a>
-                <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Điều khoản
-                    sử dụng</a>
-                <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Phản
-                    hồi</a>
+
+            <!-- Dòng dưới cùng (copyright + câu slogan) -->
+            <div
+                class="mt-14 pt-8 border-t border-[#2e7238]/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#343a23]/60 dark:text-[#e5ecc9]/60">
+                <div>
+                    © 2026 Ecoloop • VJU Sustainable Living Community
+                </div>
+                <div class="italic text-[#2e7238] text-center md:text-right">
+                    "Mỗi kg rác tái chế là một bước tiến cho Trái Đất" ♻️
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.getElementById('waste-search');
-            const classifyBtn = document.getElementById('classify-btn');
-
-            // ================= DATA =================
-            const wasteData = [
-                // Recyclable
-                { name: "Vỏ lon bia", type: "recyclable", desc: "Rửa sạch, ép dẹt trước khi bỏ.", main: ["bia", "lon bia", "vỏ bia"] },
-                { name: "Lon nước ngọt", type: "recyclable", desc: "Rửa sạch, ép dẹt.", main: ["lon nước", "nước ngọt", "lon"] },
-                { name: "Chai nhựa", type: "recyclable", desc: "Rửa sạch, bỏ nắp, ép nhẹ.", main: ["chai nhựa", "chai nước", "chai", "nhựa"] },
-                { name: "Vỏ hộp sữa", type: "recyclable", desc: "Rửa sạch, cắt nắp, ép phẳng.", main: ["hộp sữa", "sữa"] },
-                { name: "Giấy A4", type: "recyclable", desc: "Giấy sạch, bỏ vào thùng tái chế.", main: ["giấy a4", "a4", "giấy in", "giấy"] },
-
-                // Organic
-                { name: "Vỏ chuối", type: "organic", desc: "Bỏ vào thùng hữu cơ để ủ phân.", main: ["chuối", "vỏ chuối"] },
-                { name: "Vỏ cam", type: "organic", desc: "Bỏ vào thùng hữu cơ.", main: ["cam", "quýt", "vỏ cam"] },
-                { name: "Cơm thừa", type: "organic", desc: "Đậy kín tránh ruồi.", main: ["cơm", "cơm thừa"] },
-                { name: "Lá cây", type: "organic", desc: "Có thể ủ phân.", main: ["lá", "lá cây"] },
-
-                // Residual
-                { name: "Pin cũ", type: "residual", desc: "Chứa kim loại nặng, cần xử lý riêng.", main: ["pin", "pin cũ"] },
-                { name: "Đèn huỳnh quang", type: "residual", desc: "Chứa thủy ngân.", main: ["đèn", "huỳnh quang"] },
-                { name: "Khẩu trang", type: "residual", desc: "Có nguy cơ sinh học.", main: ["khẩu trang", "mặt nạ"] }
-            ];
-
-            // ================= DOM =================
-            const cards = {
-                recyclable: document.getElementById('recyclable-card'),
-                organic: document.getElementById('organic-card'),
-                residual: document.getElementById('residual-card')
-            };
-
-            const icons = {
-                recyclable: document.getElementById('recyclable-icon'),
-                organic: document.getElementById('organic-icon'),
-                residual: document.getElementById('residual-icon')
-            };
-
-            // ================= RESET =================
-            function resetAll() {
-                Object.values(cards).forEach(card => card.classList.remove('active'));
-
-                Object.values(icons).forEach(icon => {
-                    icon.classList.remove(
-                        'active-recyclable', 'active-organic', 'active-residual',
-                        'bg-primary-container', 'text-on-primary-container',
-                        'bg-tertiary-container', 'text-on-tertiary-container',
-                        'bg-error-container', 'text-on-error-container'
-                    );
-                    icon.classList.add('bg-surface-container-highest', 'text-outline');
-                });
-
-                removeResult();
-            }
-
-            // ================= ACTIVATE =================
-            function activateCard(category) {
-                const card = cards[category];
-                const icon = icons[category];
-
-                if (!card || !icon) return;
-
-                card.classList.add('active');
-
-                if (category === 'recyclable') {
-                    icon.classList.add('bg-primary-container', 'text-on-primary-container', 'active-recyclable');
-                } else if (category === 'organic') {
-                    icon.classList.add('bg-tertiary-container', 'text-on-tertiary-container', 'active-organic');
-                } else {
-                    icon.classList.add('bg-error-container', 'text-on-error-container', 'active-residual');
-                }
-            }
-
-            // ================= SEARCH LOGIC =================
-            function findWasteItem(input) {
-                input = input.toLowerCase();
-
-                let bestMatch = null;
-
-                for (let item of wasteData) {
-                    for (let keyword of item.main) {
-                        if (input.includes(keyword)) {
-                            bestMatch = item;
-                            break;
-                        }
-                    }
-                    if (bestMatch) break;
-                }
-
-                return bestMatch;
-            }
-
-            // ================= RESULT UI =================
-            function showResult(item) {
-                removeResult();
-
-                const resultDiv = document.createElement('div');
-                resultDiv.id = "result-box";
-                resultDiv.className = "mt-10 p-6 rounded-xl bg-surface-container shadow-lg text-center animate-fadeIn";
-
-                resultDiv.innerHTML = `
-                    <h3 class="text-2xl font-bold mb-2">${item.name}</h3>
-                    <p class="text-on-surface-variant mb-2">${item.desc}</p>
-                    <span class="font-semibold text-primary">Phân loại: ${getLabel(item.type)}</span>
-                `;
-
-                document.querySelector('section.relative').appendChild(resultDiv);
-            }
-
-            function removeResult() {
-                const old = document.getElementById('result-box');
-                if (old) old.remove();
-            }
-
-            function getLabel(type) {
-                if (type === 'recyclable') return "Tái chế ♻️";
-                if (type === 'organic') return "Hữu cơ 🌱";
-                return "Rác vô cơ ⚠️";
-            }
-
-            // ================= MAIN =================
-            function classifyWaste() {
-                const inputVal = searchInput.value.trim();
-
-                if (!inputVal) {
-                    resetAll();
-                    return;
-                }
-
-                const item = findWasteItem(inputVal);
-
-                if (item) {
-                    resetAll();
-                    activateCard(item.type);
-                    showResult(item);
-                } else {
-                    resetAll();
-                }
-            }
-
-            // ================= EVENTS =================
-            classifyBtn.addEventListener('click', classifyWaste);
-
-            searchInput.addEventListener('keypress', e => {
-                if (e.key === 'Enter') classifyWaste();
-            });
-
-            window.quickSearch = function (term) {
-                searchInput.value = term;
-                classifyWaste();
-            };
-
-            // INIT
-            resetAll();
-        });
-    </script>
+    <script src="/app.js"></script>
 </body>
 
 </html>

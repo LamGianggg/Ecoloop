@@ -15,6 +15,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -127,9 +128,6 @@
       <div class="flex items-center gap-4">
         <button
           class="material-symbols-outlined p-2 text-on-surface hover:bg-[#f2f6da]/50 rounded-full transition-all duration-300">search</button>
-        <button
-          class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-all duration-300 hover:shadow-lg">Tham
-          gia</button>
       </div>
     </div>
   </nav>
@@ -173,7 +171,7 @@
           <div class="relative rounded-xl overflow-hidden aspect-[4/5] shadow-2xl">
             <img class="w-full h-full object-cover"
               data-alt="vibrant group of smiling Vietnamese students in a bright campus garden holding green plants and eco-friendly bags"
-              src="" />
+              src="/ON5RS90.jpg" />
           </div>
           <div
             class="absolute -bottom-8 -left-8 bg-surface-container-lowest p-6 rounded-lg shadow-xl flex items-center gap-4 max-w-xs">
@@ -182,7 +180,7 @@
             </div>
             <div>
               <div class="text-2xl font-bold font-headline text-primary">500+ kg</div>
-              <div class="text-xs text-on-surface-variant">Rác thải đã được tái chế thành công</div>
+              <div class="text-xs text-on-surface-variant">Rác thải đang chờ được phân loại – bắt đầu từ bạn</div>
             </div>
           </div>
         </div>
@@ -307,39 +305,59 @@
       </div>
     </section>
 
-    <script>
-      function toggleContent() {
-        const content = document.getElementById("fullContent");
-        const btn = document.getElementById("toggleBtn");
-
-        content.classList.toggle("hidden");
-
-        if (content.classList.contains("hidden")) {
-          btn.innerText = "Xem thêm ↓";
-        } else {
-          btn.innerText = "Thu gọn ↑";
-        }
-      }
-    </script>
+    <script src="/app.js"></script>
   </main>
   <!-- Footer -->
   <footer class="w-full rounded-t-[3rem] mt-20 bg-[#f8fce2] dark:bg-[#1a1c0e]">
-    <div
-      class="flex flex-col md:flex-row justify-between items-center px-12 py-10 w-full font-['Manrope'] text-sm text-[#343a23]/70 dark:text-[#e5ecc9]/70">
-      <div class="flex flex-col items-center md:items-start gap-2 mb-6 md:mb-0">
-        <div class="text-lg font-bold text-[#2e7238] font-headline">Ecoloop</div>
-        <p>© 2026 Ecoloop - VJU Sustainable Living Community</p>
+    <div class="max-w-7xl mx-auto px-8 md:px-12 py-12 font-['Manrope']">
+      
+      <!-- Main content - 4 cột giống hệt thiết kế bạn gửi -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+  
+        <!-- Cột 1: Logo + mô tả (giống bên trái) -->
+        <div class="lg:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-12 h-12 text-white rounded-2xl flex items-center justify-center text-4xl shadow-inner"><img src="/Ecoloop.jpg" alt=""></div>
+            <div class="text-4xl font-bold text-[#2e7238] font-headline tracking-[-1px]">Ecoloop</div>
+          </div>
+          
+          <p class="text-[#343a23]/80 dark:text-[#e5ecc9]/80 text-sm leading-tight max-w-[260px]">
+            Hành trình xanh vì một tương lai bền vững.<br>
+            Bắt đầu từ những hành động nhỏ nhất.
+          </p>
+  
+          <!-- Social icons - kiểu vuông bo tròn giống ảnh -->
+          <div class="flex gap-4 mt-8">
+            <a href="#" class="w-10 h-10 bg-white dark:bg-[#2e7238]/10 hover:bg-[#2e7238]/10 rounded-3xl flex items-center justify-center text-2xl transition-all hover:scale-110 shadow-sm"><i class="fa-brands fa-facebook text-blue-600 hover:scale-110 transition"></i></a>
+            <a href="#" class="w-10 h-10 bg-white dark:bg-[#2e7238]/10 hover:bg-[#2e7238]/10 rounded-3xl flex items-center justify-center text-2xl transition-all hover:scale-110 shadow-sm">✉️</a>
+          </div>
+        </div>
+  
+        <!-- Cột 2: KHÁM PHÁ -->
+        <div class="lg:col-span-3">
+          <p class="uppercase text-[#2e7238] font-bold tracking-widest text-sm mb-4">KHÁM PHÁ</p>
+          <div class="flex flex-col gap-3 text-[#343a23]/80 dark:text-[#e5ecc9]/80 text-[15px]">
+            <a href="/Sort/code.html" class="hover:text-[#2e7238] transition-colors">Phân loại</a>
+          </div>
+        </div>
+  
+        <!-- Cột 3: VỀ ECOLOOP -->
+        <div class="lg:col-span-3">
+          <p class="uppercase text-[#2e7238] font-bold tracking-widest text-sm mb-4">VỀ ECOLOOP</p>
+          <div class="flex flex-col gap-3 text-[#343a23]/80 dark:text-[#e5ecc9]/80 text-[15px]">
+            <a href="/We/code.html" class="hover:text-[#2e7238] transition-colors">Về chúng tôi</a>
+          </div>
+        </div>
       </div>
-      <div class="flex gap-8 items-center">
-        <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Chính sách bảo
-          mật</a>
-        <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Điều khoản sử
-          dụng</a>
-        <a class="hover:text-[#2e7238] transition-colors underline decoration-[#2e7238]/30" href="#">Phản hồi</a>
-      </div>
-      <div class="flex gap-4 mt-6 md:mt-0 opacity-80 hover:opacity-100 transition-opacity">
-        <span class="material-symbols-outlined cursor-pointer hover:text-primary">language</span>
-        <span class="material-symbols-outlined cursor-pointer hover:text-primary">share</span>
+  
+      <!-- Dòng dưới cùng (copyright + câu slogan) -->
+      <div class="mt-14 pt-8 border-t border-[#2e7238]/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#343a23]/60 dark:text-[#e5ecc9]/60">
+        <div>
+          © 2026 Ecoloop • VJU Sustainable Living Community
+        </div>
+        <div class="italic text-[#2e7238] text-center md:text-right">
+          "Mỗi kg rác tái chế là một bước tiến cho Trái Đất" ♻️
+        </div>
       </div>
     </div>
   </footer>
