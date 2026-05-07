@@ -12,11 +12,13 @@ function toggleContent() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
     const searchInput = document.getElementById('waste-search');
     const classifyBtn = document.getElementById('classify-btn');
 
     // ================= DATA =================
     const wasteData = [
+
         // ================= RECYCLABLE =================
         { name: "Chai thủy tinh", type: "recyclable", desc: "Rửa sạch trước khi tái chế.", main: ["chai thủy tinh", "chai kính"] },
         { name: "Lọ thủy tinh", type: "recyclable", desc: "Rửa sạch, tháo nắp.", main: ["lọ", "lọ thủy tinh"] },
@@ -34,8 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: "Dây điện cũ", type: "recyclable", desc: "Tái chế kim loại.", main: ["dây điện"] },
         { name: "Vỏ hộp thiếc", type: "recyclable", desc: "Làm sạch.", main: ["thiếc"] },
         { name: "Vỏ lon bia", type: "recyclable", desc: "Rửa sạch, ép dẹt trước khi bỏ.", main: ["bia", "lon bia", "vỏ bia"] },
-        { name: "Lon nước ngọt", type: "recyclable", desc: "Rửa sạch, ép dẹt.", main: ["lon nước", "nước ngọt", "lon"] }, 
-        { name: "Chai nhựa", type: "recyclable", desc: "Rửa sạch, bỏ nắp, ép nhẹ.", main: ["chai nhựa", "chai nước", "chai", "nhựa"] }, { name: "Vỏ hộp", type: "recyclable", desc: "Rửa sạch, cắt nắp, ép phẳng.", main: ["hộp"] }, { name: "Giấy A4", type: "recyclable", desc: "Giấy sạch, bỏ vào thùng tái chế.", main: ["giấy a4", "a4", "giấy in", "giấy"] },
+        { name: "Lon nước ngọt", type: "recyclable", desc: "Rửa sạch, ép dẹt.", main: ["lon nước", "nước ngọt", "lon"] },
+        { name: "Chai nhựa", type: "recyclable", desc: "Rửa sạch, bỏ nắp, ép nhẹ.", main: ["chai nhựa", "chai nước", "chai", "nhựa"] },
+        { name: "Vỏ hộp", type: "recyclable", desc: "Rửa sạch, cắt nắp, ép phẳng.", main: ["hộp"] },
+        { name: "Giấy A4", type: "recyclable", desc: "Giấy sạch, bỏ vào thùng tái chế.", main: ["giấy a4", "a4", "giấy in"] },
 
         // ================= ORGANIC =================
         { name: "Vỏ táo", type: "organic", desc: "Có thể ủ phân.", main: ["táo", "vỏ táo"] },
@@ -52,14 +56,17 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: "Lá khô", type: "organic", desc: "Ủ phân.", main: ["lá khô"] },
         { name: "Vỏ xoài", type: "organic", desc: "Ủ phân.", main: ["xoài"] },
         { name: "Vỏ dứa", type: "organic", desc: "Ủ compost.", main: ["dứa"] },
-        { name: "Vỏ chuối", type: "organic", desc: "Bỏ vào thùng hữu cơ để ủ phân.", main: ["chuối", "vỏ chuối"] }, { name: "Vỏ cam", type: "organic", desc: "Bỏ vào thùng hữu cơ.", main: ["cam", "quýt", "vỏ cam"] }, { name: "Cơm thừa", type: "organic", desc: "Đậy kín tránh ruồi.", main: ["cơm", "cơm thừa"] }, { name: "Lá cây", type: "organic", desc: "Có thể ủ phân.", main: ["lá", "lá cây"] },
+        { name: "Vỏ chuối", type: "organic", desc: "Bỏ vào thùng hữu cơ để ủ phân.", main: ["chuối", "vỏ chuối"] },
+        { name: "Vỏ cam", type: "organic", desc: "Bỏ vào thùng hữu cơ.", main: ["cam", "quýt", "vỏ cam"] },
+        { name: "Cơm thừa", type: "organic", desc: "Đậy kín tránh ruồi.", main: ["cơm", "cơm thừa"] },
+        { name: "Lá cây", type: "organic", desc: "Có thể ủ phân.", main: ["lá", "lá cây"] },
 
         // ================= RESIDUAL =================
         { name: "Bóng đèn LED", type: "residual", desc: "Không tái chế thường.", main: ["đèn led"] },
         { name: "Bóng đèn sợi đốt", type: "residual", desc: "Bỏ riêng.", main: ["đèn sợi đốt"] },
         { name: "Ống tiêm", type: "residual", desc: "Nguy hiểm sinh học.", main: ["ống tiêm"] },
         { name: "Bỉm", type: "residual", desc: "Không tái chế.", main: ["tã", "bỉm"] },
-        { name: "Giấy vệ sinh", type: "residual", desc: "Không tái chế.", main: ["giấy vệ sinh"] },
+        { name: "Giấy vệ sinh", type: "residual", desc: "Không tái chế.", main: ["vệ sinh"] },
         { name: "Khăn giấy bẩn", type: "residual", desc: "Không tái chế.", main: ["khăn giấy"] },
         { name: "Vỏ snack", type: "residual", desc: "Nhựa nhiều lớp.", main: ["snack"] },
         { name: "Bao bì mì gói", type: "residual", desc: "Khó tái chế.", main: ["mì gói"] },
@@ -69,8 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: "Pin sạc", type: "residual", desc: "Cần xử lý riêng.", main: ["pin sạc"] },
         { name: "Adapter hỏng", type: "residual", desc: "Rác điện tử.", main: ["adapter"] },
         { name: "Tai nghe hỏng", type: "residual", desc: "Rác điện tử.", main: ["tai nghe"] },
-        { name: "Pin cũ", type: "residual", desc: "Chứa kim loại nặng, cần xử lý riêng.", main: ["pin", "pin cũ"] }, { name: "Đèn huỳnh quang", type: "residual", desc: "Chứa thủy ngân.", main: ["đèn", "huỳnh quang"] }, { name: "Khẩu trang", type: "residual", desc: "Có nguy cơ sinh học.", main: ["khẩu trang", "mặt nạ"] }
-
+        { name: "Pin cũ", type: "residual", desc: "Chứa kim loại nặng, cần xử lý riêng.", main: ["pin", "pin cũ"] },
+        { name: "Đèn huỳnh quang", type: "residual", desc: "Chứa thủy ngân.", main: ["đèn", "huỳnh quang"] },
+        { name: "Khẩu trang", type: "residual", desc: "Có nguy cơ sinh học.", main: ["khẩu trang", "mặt nạ"] },
     ];
 
     // ================= DOM =================
@@ -88,23 +96,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ================= RESET =================
     function resetAll() {
-        Object.values(cards).forEach(card => card.classList.remove('active'));
+
+        Object.values(cards).forEach(card => {
+            card.classList.remove('active');
+        });
 
         Object.values(icons).forEach(icon => {
+
             icon.classList.remove(
-                'active-recyclable', 'active-organic', 'active-residual',
-                'bg-primary-container', 'text-on-primary-container',
-                'bg-tertiary-container', 'text-on-tertiary-container',
-                'bg-error-container', 'text-on-error-container'
+                'active-recyclable',
+                'active-organic',
+                'active-residual',
+                'bg-primary-container',
+                'text-on-primary-container',
+                'bg-tertiary-container',
+                'text-on-tertiary-container',
+                'bg-error-container',
+                'text-on-error-container'
             );
-            icon.classList.add('bg-surface-container-highest', 'text-outline');
+
+            icon.classList.add(
+                'bg-surface-container-highest',
+                'text-outline'
+            );
         });
 
         removeResult();
     }
 
-    // ================= ACTIVATE =================
+    // ================= ACTIVE CARD =================
     function activateCard(category) {
+
         const card = cards[category];
         const icon = icons[category];
 
@@ -113,90 +135,207 @@ document.addEventListener('DOMContentLoaded', function () {
         card.classList.add('active');
 
         if (category === 'recyclable') {
-            icon.classList.add('bg-primary-container', 'text-on-primary-container', 'active-recyclable');
+
+            icon.classList.add(
+                'bg-primary-container',
+                'text-on-primary-container',
+                'active-recyclable'
+            );
+
         } else if (category === 'organic') {
-            icon.classList.add('bg-tertiary-container', 'text-on-tertiary-container', 'active-organic');
+
+            icon.classList.add(
+                'bg-tertiary-container',
+                'text-on-tertiary-container',
+                'active-organic'
+            );
+
         } else {
-            icon.classList.add('bg-error-container', 'text-on-error-container', 'active-residual');
+
+            icon.classList.add(
+                'bg-error-container',
+                'text-on-error-container',
+                'active-residual'
+            );
         }
     }
 
-    // ================= SEARCH LOGIC =================
+    // ================= FIND ITEM =================
     function findWasteItem(input) {
+
         input = input.toLowerCase();
 
-        let bestMatch = null;
-
         for (let item of wasteData) {
+
             for (let keyword of item.main) {
+
                 if (input.includes(keyword)) {
-                    bestMatch = item;
-                    break;
+                    return item;
                 }
             }
-            if (bestMatch) break;
         }
 
-        return bestMatch;
+        return null;
     }
 
-    // ================= RESULT UI =================
+    // ================= LABEL =================
+    function getLabel(type) {
+
+        if (type === 'recyclable') {
+            return "Tái chế ♻️";
+        }
+
+        if (type === 'organic') {
+            return "Hữu cơ 🌱";
+        }
+
+        return "Rác vô cơ ⚠️";
+    }
+
+    // ================= SHOW RESULT =================
     function showResult(item) {
+
         removeResult();
 
         const resultDiv = document.createElement('div');
+
         resultDiv.id = "result-box";
-        resultDiv.className = "mt-10 p-6 rounded-xl bg-surface-container shadow-lg text-center animate-fadeIn";
+
+        resultDiv.className =
+            "mt-10 p-6 rounded-xl bg-surface-container shadow-lg text-center animate-fadeIn";
 
         resultDiv.innerHTML = `
-            <h3 class="text-2xl font-bold mb-2">${item.name}</h3>
-            <p class="text-on-surface-variant mb-2">${item.desc}</p>
-            <span class="font-semibold text-primary">Phân loại: ${getLabel(item.type)}</span>
+            <h3 class="text-2xl font-bold mb-2">
+                ${item.name}
+            </h3>
+
+            <p class="text-on-surface-variant mb-2">
+                ${item.desc}
+            </p>
+
+            <span class="font-semibold text-primary">
+                Phân loại: ${getLabel(item.type)}
+            </span>
         `;
 
-        document.querySelector('section.relative').appendChild(resultDiv);
+        document.querySelector('section.relative')
+            .appendChild(resultDiv);
     }
 
+    // ================= INVALID RESULT =================
+    // ================= INVALID RESULT =================
+    function showInvalidResult(input) {
+
+        removeResult();
+
+        const resultDiv = document.createElement('div');
+
+        resultDiv.id = "result-box";
+
+        // UI đẹp hơn + dễ nhìn hơn
+        resultDiv.className =
+            "mt-10 p-6 rounded-2xl border border-red-300 bg-red-50 shadow-xl text-center animate-fadeIn";
+
+        resultDiv.innerHTML = `
+        <div class="flex flex-col items-center gap-3">
+
+            <div class="text-5xl">
+                ⚠️
+            </div>
+
+            <h3 class="text-2xl font-bold text-red-600">
+                Không tìm thấy
+            </h3>
+
+            <p class="text-gray-700 text-lg">
+                "${input}" không tồn tại trong hệ thống phân loại rác.
+            </p>
+
+        </div>
+    `;
+
+        document.querySelector('section.relative')
+            .appendChild(resultDiv);
+    }
+
+    // ================= REMOVE RESULT =================
     function removeResult() {
-        const old = document.getElementById('result-box');
-        if (old) old.remove();
-    }
 
-    function getLabel(type) {
-        if (type === 'recyclable') return "Tái chế ♻️";
-        if (type === 'organic') return "Hữu cơ 🌱";
-        return "Rác vô cơ ⚠️";
+        const old = document.getElementById('result-box');
+
+        if (old) {
+            old.remove();
+        }
     }
 
     // ================= MAIN =================
     function classifyWaste() {
+
         const inputVal = searchInput.value.trim();
 
+        // INPUT RỖNG
         if (!inputVal) {
+
             resetAll();
+
+            showInvalidResult("Bạn chưa nhập dữ liệu");
+
             return;
         }
 
         const item = findWasteItem(inputVal);
 
+        // TÌM THẤY
         if (item) {
+
             resetAll();
+
             activateCard(item.type);
+
             showResult(item);
+
+            // SAVE SERVER
+            fetch("http://localhost:3000/save", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    item: item.name,
+                    category: item.type
+                })
+
+            })
+                .then(res => res.text())
+                .then(data => console.log("SERVER:", data))
+                .catch(err => console.error("ERROR:", err));
+
         } else {
+
             resetAll();
+
+            showInvalidResult(inputVal);
         }
     }
 
     // ================= EVENTS =================
     classifyBtn.addEventListener('click', classifyWaste);
 
-    searchInput.addEventListener('keypress', e => {
-        if (e.key === 'Enter') classifyWaste();
+    searchInput.addEventListener('keypress', function (e) {
+
+        if (e.key === 'Enter') {
+            classifyWaste();
+        }
     });
 
+    // QUICK SEARCH
     window.quickSearch = function (term) {
+
         searchInput.value = term;
+
         classifyWaste();
     };
 
@@ -204,7 +343,9 @@ document.addEventListener('DOMContentLoaded', function () {
     resetAll();
 });
 
+// ================= MOBILE MENU =================
 const toggle = document.getElementById("menu-toggle");
+
 const menu = document.getElementById("mobile-menu");
 
 toggle.addEventListener("click", () => {
